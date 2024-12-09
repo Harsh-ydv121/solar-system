@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    margin: 0;
+    background-color: black;
+}
+
+#solar-system {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+
+.sun {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit {
+    position: absolute;
+    border: dashed 1px white;
+    border-radius: 50%;
+}
+
+.mercury-orbit {
+    width: 150px; 
+    height: 150px; 
+    top: 50%; 
+    left: 50%; 
+    margin-top: -75px; 
+    margin-left: -75px; 
+}
+
+.venus-orbit {
+    width: 200px; 
+    height: 200px; 
+    top: 50%; 
+    left: 50%; 
+    margin-top: -100px; 
+    margin-left: -100px; 
+}
+
+.earth-orbit {
+    width: 250px; 
+    height: 250px; 
+    top: 50%; 
+    left: 50%; 
+    margin-top: -125px; 
+    margin-left: -125px; 
+}
+
+.mars-orbit {
+    width: 300px; 
+    height: 300px; 
+    top: 50%; 
+    left: 50%; 
+    margin-top: -150px; 
+    margin-left: -150px; 
+}
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.mercury {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+}
+
+.venus {
+    width: 20px;
+    height: 20px;
+    background-color: orange;
+}
+
+.earth {
+    width: 22px;
+    height: 22px;
+    background-color: blue;
+}
+
+.mars {
+    width: 18px;
+    height: 18px;
+    background-color: red;
+}
+    </style>
+</head>
+<body>
+    <div id="solar-system">
+        <div class="sun"></div>
+        <div class="orbit mercury-orbit">
+            <div class="planet mercury"></div>
+        </div>
+        <div class="orbit venus-orbit">
+            <div class="planet venus"></div>
+        </div>
+        <div class="orbit earth-orbit">
+            <div class="planet earth"></div>
+        </div>
+        <div class="orbit mars-orbit">
+            <div class="planet mars"></div>
+        </div>
+    </div>
+    <script>
+        const planets = document.querySelectorAll('.planet');
+const orbits = document.querySelectorAll('.orbit');
+
+function animatePlanets() {
+   orbits.forEach((orbit, index) => {
+       const rotationSpeed = (index + 1) * 5; // Different speeds for each planet
+       orbit.style.animation = `rotate ${rotationSpeed}s linear infinite`;
+   });
+}
+
+// Keyframes for rotation
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes rotate {
+   from { transform: rotate(0deg); }
+   to { transform: rotate(360deg); }
+}`;
+document.head.appendChild(style);
+
+animatePlanets();
+    </script>
+</body>
+</html>
